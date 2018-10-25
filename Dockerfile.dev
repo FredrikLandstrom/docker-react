@@ -1,0 +1,19 @@
+# This Dockerfile is for development
+
+# Use base image
+FROM node:alpine
+
+# Set working directory in Container
+WORKDIR '/app'
+
+# Copy only the package.json file to working directory
+COPY package.json .
+
+# Install Dependencies
+RUN npm install
+
+# Copy all the rest (source files etc)
+COPY . .
+
+# Start the server
+CMD ["npm", "run", "start"]
